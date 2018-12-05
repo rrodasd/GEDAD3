@@ -16,10 +16,12 @@ import java.io.File;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
@@ -27,7 +29,6 @@ import pe.mil.ejercito.alfresco_api.commons.AlfrescoProcess;
 import pe.mil.ejercito.alfresco_api.commons.PropertiesUtil;
 import sagde.comun.OracleDBConn;
 
-import sagde.bean.BeanDistribucion;
 import sagde.bean.BeanRegistroDocumento;
 import sagde.bean.BeanUsuarioAD;
 // Extend HttpServlet class
@@ -124,10 +125,8 @@ public class ServletGrabarReferenciaFD extends HttpServlet {
                 for (FileItem item : items) {
 
                     if (!item.isFormField()) {
-                        
                         String nameFile = FilenameUtils.getName(item.getName());
                         byte[] bytesArchivo = item.get();
-                        System.out.println("Nombre x"+nameFile+"x");
                         //(7). llama a api   import pe.mil.ejercito.alfresco_api.commons.AlfrescoProcess  
                         PropertiesUtil pUtillocal = new PropertiesUtil(PATH_PROPERTIESLOCAL);
                         String contentType = "application/octet-stream";
@@ -138,7 +137,6 @@ public class ServletGrabarReferenciaFD extends HttpServlet {
                         PreparedStatement pcs = null;
                         CallableStatement cs = null;
                         cnx = getConnection();
-
                         pcs = cnx.prepareStatement("UPDATE SAGDE_DISTRIBUCION set VDISTRIBUCION_NOM_FILE = ? , VDISTRIBUCION_TOKEN = ? WHERE CDISTRIBUCION_PERIODO = ? AND CDISTRIBUCION_COD_DOC_INT = ? AND CDISTRIBUCION_TIPO_ORG = ? AND CDISTRIBUCION_COD_ORG = ?");
                         pcs.setString(1, nameFile);
                         pcs.setString(2, retornoUpload);
@@ -147,8 +145,7 @@ public class ServletGrabarReferenciaFD extends HttpServlet {
                         pcs.setString(5, tipo);
                         pcs.setString(6, String.format("%1$-30s", objBeanU.getVUSUARIO_CODIGO()));
                         pcs.executeUpdate();
-                        cnx.commit();
-
+                        
                         String query = "{call SP_FORMULAR_DOCUMENTO(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
                         cs = cnx.prepareCall(query);
                         cs.setString(1, "B");
@@ -179,9 +176,13 @@ public class ServletGrabarReferenciaFD extends HttpServlet {
 
             }
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error de Aplicacion " + e.getMessage());
             System.out.println("Error " + e.toString());
+            return false;
+        } catch (FileUploadException eX) {
+            System.out.println("Error de Aplicacion " + eX.getMessage());
+            System.out.println("Error " + eX.toString());
             return false;
         }
 
