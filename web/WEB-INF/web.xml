@@ -256,6 +256,14 @@
         <servlet-name>ListarUsuario</servlet-name>
         <url-pattern>/listausuario</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ListarEncargatura</servlet-name>
+        <servlet-class>sagde.mantotablas.ListarEncargatura</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarEncargatura</servlet-name>
+        <url-pattern>/listaencargatura</url-pattern>
+    </servlet-mapping>
     <!-- CERRAR LOGOUT -->
     <servlet>
         <servlet-name>ServletLogout</servlet-name>
