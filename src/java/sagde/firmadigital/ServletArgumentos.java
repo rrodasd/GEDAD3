@@ -5,6 +5,7 @@
  */
 package sagde.firmadigital;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import comun.Constante;
 import comun.StringUtil;
 import java.io.IOException;
@@ -97,7 +98,7 @@ public class ServletArgumentos extends HttpServlet {
     private void generaArgumentos(HttpServletRequest req, HttpServletResponse res) throws IOException{
         
         
-        System.out.println("en genera argumento ------------------------------------------------------");
+        //System.out.println("en genera argumento ------------------------------------------------------");
         PrintWriter pw = res.getWriter();
         String serverPath =  Constante.SERVER_PATH;
         
@@ -114,8 +115,10 @@ public class ServletArgumentos extends HttpServlet {
              String cargo_distribucion = req.getParameter("cargo_distribucion");
              String asunto = req.getParameter("asunto");
              String cuerpo = req.getParameter("cuerpo");
+             String periodo = req.getParameter("periodo");
+             String codigo_gedad = req.getParameter("codigo_gedad");
              
-             System.out.println("nroUnicoDoc*-*-*-*-*-*-*-*-"+nroUnicoDoc);
+             //System.out.println("nroUnicoDoc*-*-*-*-*-*-*-*-"+nroUnicoDoc);
              
            
              
@@ -124,38 +127,30 @@ public class ServletArgumentos extends HttpServlet {
             String protocolo = FirmaConfiguracion.getProtocolo(serverPath);
               
             
-           System.out.println("---------argumentos :protocol------"+protocolo+"--serverPath:>"+serverPath+"--documentName:>"+documentName);
+           //System.out.println("---------argumentos :protocol------"+protocolo+"--serverPath:>"+serverPath+"--documentName:>"+documentName);
         	
             String arguments = FirmaConfiguracion.paramWeb(protocolo, 
                                                             StringUtil.unir(serverPath, 
-                                                                            "/repOficioFirmaDigital?orgint_origen="+
-                                                                           orgint_origen+
-                                                                           "&nombreanio="+
-                                                                           nombreanio+
-                                                                           "&guarnicion="+
-                                                                           guarnicion+
-                                                                           "&fecha="+
-                                                                           fecha+ 
-                                                                           "&orgint_redacta="+
-                                                                           orgint_redacta+
-                                                                           "&archivo="+
-                                                                           archivo+
-                                                                           "&grado_distribucion="+
-                                                                           grado_distribucion+
-                                                                           "&cargo_distribucion="+
-                                                                           cargo_distribucion+
-                                                                           "&asunto="+
-                                                                           asunto+
-                                                                           "&cuerpo="+
-                                                                           cuerpo+
-                                                                           "&nroUnicoDoc="+
-                                                                           nroUnicoDoc), 
+                                                                            "/repOficioFirmaDigital?orgint_origen="+orgint_origen+
+                                                                           "&nombreanio="+nombreanio+
+                                                                           "&guarnicion="+guarnicion+
+                                                                           "&fecha="+fecha+ 
+                                                                           "&periodo="+periodo+ 
+                                                                           "&codigo_gedad="+codigo_gedad+ 
+                                                                           "&orgint_redacta="+orgint_redacta+
+                                                                           "&archivo="+archivo+
+                                                                           "&grado_distribucion="+grado_distribucion+
+                                                                           "&cargo_distribucion="+cargo_distribucion+
+                                                                           "&asunto="+asunto+
+                                                                           "&cuerpo="+cuerpo+
+                                                                           "&nroUnicoDoc="+nroUnicoDoc
+                                                            ), 
                                                             serverPath, 
                                                             documentName);
             pw.write(arguments);
             pw.close();  
-        }catch(Exception e){
-            
+        }catch(JsonProcessingException e){
+            System.out.println("Error en: "+e.toString());
         }
         
         

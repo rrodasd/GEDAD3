@@ -43,98 +43,105 @@
         <script type="text/javascript" src="<%= request.getContextPath()%>/js/pe.mil.ejercito.constants.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath()%>/js/bootstrap-datepicker.min.js"></script>
         <script type="text/javascript" src="<%= request.getContextPath()%>/js/bootstrap-datepicker.es.min.js"></script> 
-        
-         <!-- API CERTIFICADO FIGITAL -->
+
+        <!-- API CERTIFICADO FIGITAL -->
         <script type="text/javascript" src="https://dsp.reniec.gob.pe/refirma_invoker/resources/js/client.js"></script> 
-        
-        
-        
+
+
+
         <%
             BeanUsuarioAD objBeanU = (BeanUsuarioAD) session.getAttribute("usuario");
             session.setAttribute("anexos", null);
             DAOFactory objDAOFactory = DAOFactory.getDAOFactory(DAOFactory.ORACLE);
-            RevisaDocumentoDAO objRD = objDAOFactory.getRevisaDocumentoDAO();
-             FirmarDocumentoDAO objFD = objDAOFactory.getFirmarDocumentoDAO(); 
+            FirmarDocumentoDAO objFD = objDAOFactory.getFirmarDocumentoDAO();
         %>
-        
-        
- <script type="text/javascript">
-  
-  //<![CDATA[
-  var documentName_ = null;
-                      //
-  window.addEventListener('getArguments', function (e) { ObtieneArgumentosParaFirmaDesdeLaWeb(); });
-
-  window.addEventListener('invokerOk', function (e) { MiFuncionOkWeb(); });
-
-  window.addEventListener('invokerCancel', function (e) {MiFuncionCancel();	});
-                        
-  function getArguments(){	
-      arg = document.getElementById("argumentos").value;				
-      dispatchEventClient('sendArguments', arg);																
-  }
-    
-  /**
-   * Metodo que permite pasar argumentos para que pueda firmarse desde la web
-   * @returns 
-   */
-  function ObtieneArgumentosParaFirmaDesdeLaWeb(){
-      // Se debe generar un nuevo Servlet
-       
-      $.post("argumentos", {
-              documentName : "2018006173.pdf",
-              nroUnicoDoc : btoa(document.all.txt_nro_unico_OF.value),
-              orgint_origen : btoa(document.all.cbo_OrgDependencia.options[document.all.cbo_OrgDependencia.selectedIndex].text),
-              nombreanio : btoa(document.all.txt_NombreAnio.value),
-              guarnicion : btoa(document.all.txt_Guarnicion.value),
-              fecha : btoa(document.all.txt_Fecha.value),
-              orgint_redacta : btoa(document.all.txt_Clave.value),
-              archivo : btoa(document.all.cboArchivoIndicativo.options[document.all.cboArchivoIndicativo.selectedIndex].text),
-              grado_distribucion : btoa(document.all.txt_Grado.value),
-              cargo_distribucion : btoa(document.all.txt_Cargo.value),
-              asunto : btoa(document.all.txt_Asunto.value),
-              cuerpo : btoa(btoa(CKEDITOR.instances.cuerpo.getData()))
-                
-                
-      }, function(data, status) {				
-              document.getElementById("argumentos").value = data;
-              getArguments();
-      });			
-  }
-    
-  /**
-   * Si puede firmar el documento mostrará un mensaje de confirmación
-   * @returns {undefined}
-   */
-  function MiFuncionOkWeb(){
-    alert("Documento firmado desde una URL correctamente00000000.");
-    //document.getElementById("signedDocument").href="getFileServlet?documentName=" + documentName_; // A validar
-      
-  //Se enviará MifuncionSaveOfFD servlet para guardar en la base de datos despues de haber firmado digitalmente
-    MifuncionSaveOfFD();
-      
-  }
-    
-    
-  function MifuncionSaveOfFD(){
-                
-    f_tranferencia('FIRMADIGITAL');     
-              
-  }
-    
-  /**
-   * Solo si decide cancelar la firma
-   * @returns {undefined}
-   */
-      function MiFuncionCancel(){
-          alert("El proceso de firma digital fue cancelado.");
-                }
 
 
-    function f_cerrar_moDetalleEnvio() {
-        $('#miModalEnvio').modal('hide');
-    }
- </script>    
+        <script type="text/javascript">
+
+            //<![CDATA[
+            var documentName_ = null;
+            //
+            window.addEventListener('getArguments', function (e) {
+                ObtieneArgumentosParaFirmaDesdeLaWeb();
+            });
+
+            window.addEventListener('invokerOk', function (e) {
+                MiFuncionOkWeb();
+            });
+
+            window.addEventListener('invokerCancel', function (e) {
+                MiFuncionCancel();
+            });
+
+            function getArguments() {
+                arg = document.getElementById("argumentos").value;
+                dispatchEventClient('sendArguments', arg);
+            }
+
+            /**
+             * Metodo que permite pasar argumentos para que pueda firmarse desde la web
+             * @returns 
+             */
+            function ObtieneArgumentosParaFirmaDesdeLaWeb() {
+                // Se debe generar un nuevo Servlet
+
+                $.post("argumentos", {
+                    documentName: "2018006173.pdf",
+                    nroUnicoDoc: btoa(document.all.txt_nro_unico_OF.value),
+                    orgint_origen: btoa(document.all.cbo_OrgDependencia.options[document.all.cbo_OrgDependencia.selectedIndex].text),
+                    nombreanio: btoa(document.all.txt_NombreAnio.value),
+                    guarnicion: btoa(document.all.txt_Guarnicion.value),
+                    fecha: btoa(document.all.txt_Fecha.value),
+                    orgint_redacta: btoa(document.all.txt_Clave.value),
+                    archivo: btoa(document.all.cboArchivoIndicativo.options[document.all.cboArchivoIndicativo.selectedIndex].text),
+                    grado_distribucion: btoa(document.all.txt_Grado.value),
+                    cargo_distribucion: btoa(document.all.txt_Cargo.value),
+                    asunto: btoa(document.all.txt_Asunto.value),
+                    periodo: btoa(document.all.txh_periodo_rev.value),
+                    codigo_gedad: btoa(document.all.txh_cod_int_rev.value),
+                    cuerpo: btoa(btoa(CKEDITOR.instances.cuerpo.getData()))
+
+
+                }, function (data, status) {
+                    document.getElementById("argumentos").value = data;
+                    getArguments();
+                });
+            }
+
+            /**
+             * Si puede firmar el documento mostrará un mensaje de confirmación
+             * @returns {undefined}
+             */
+            function MiFuncionOkWeb() {
+                alert("Documento firmado desde una URL correctamente00000000.");
+                //document.getElementById("signedDocument").href="getFileServlet?documentName=" + documentName_; // A validar
+
+                //Se enviará MifuncionSaveOfFD servlet para guardar en la base de datos despues de haber firmado digitalmente
+                MifuncionSaveOfFD();
+
+            }
+
+
+            function MifuncionSaveOfFD() {
+
+                f_tranferencia('FIRMADIGITAL');
+
+            }
+
+            /**
+             * Solo si decide cancelar la firma
+             * @returns {undefined}
+             */
+            function MiFuncionCancel() {
+                alert("El proceso de firma digital fue cancelado.");
+            }
+
+
+            function f_cerrar_moDetalleEnvio() {
+                $('#miModalEnvio').modal('hide');
+            }
+        </script>    
 
         <!--     FIN LIBRERIAS ESTANDAR   -->       
         <style type="text/css">
@@ -269,60 +276,60 @@
             function ocultar(nombreCapa) {
                 document.getElementById(nombreCapa).style.visibility = "hidden";
             }
-  /*
-   * 
-   *    FIRMA DIGITAL
-   */
-            
-  var ajaxNroUnico = null;
-                      function funcionCallbackNroUnico() {
-                          if (ajaxNroUnico.readyState === 4 && ajaxNroUnico.status === 200) {
-                              document.all.div_Nro_Unico_OF.innerHTML = ajaxNroUnico.responseText;                    
-                              //$('.selectpicker').selectpicker({style: 'btn-info',size: 10 });
-                          }
-             }
-             
-    function f_FirmaDigital(){
-        alert("abrira para la firma");
-             
-               var reporte = "REV_08";
-               if (window.XMLHttpRequest) {
+            /*
+             * 
+             *    FIRMA DIGITAL
+             */
+
+            var ajaxNroUnico = null;
+            function funcionCallbackNroUnico() {
+                if (ajaxNroUnico.readyState === 4 && ajaxNroUnico.status === 200) {
+                    document.all.div_Nro_Unico_OF.innerHTML = ajaxNroUnico.responseText;
+                    //$('.selectpicker').selectpicker({style: 'btn-info',size: 10 });
+                }
+            }
+
+            function f_FirmaDigital() {
+                alert("abrira para la firma");
+
+                var reporte = "REV_08";
+                if (window.XMLHttpRequest) {
                     ajaxNroUnico = new XMLHttpRequest();
                 } else {
                     ajaxNroUnico = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                 ajaxNroUnico.onreadystatechange = funcionCallbackNroUnico;
-                var ruta = "<%= request.getContextPath()%>/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=" + new Date().getTime() + "&reporte=" + reporte ;
+                var ruta = "<%= request.getContextPath()%>/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=" + new Date().getTime() + "&reporte=" + reporte;
                 ajaxNroUnico.open("GET", ruta, true);
                 ajaxNroUnico.send("");
-             
-    alert("Firma Digital con el Sistema GEDAD - CINFE");
-            
-    // Se debe llamar a la firma digital            
-    // insertFrame();
-              initInvoker('W');      
-          }
-    
-         
-    
- //--------------------------------------------------------------------------------------------------------------
-            
-             function f_listar(dependencia) {               
-             var reporte = "REV_01"; 
-      
-                if( isEq(dependencia, SEL_DEPENDENCIA_VACIO) ){
+
+                alert("Firma Digital con el Sistema GEDAD - CINFE");
+
+                // Se debe llamar a la firma digital            
+                // insertFrame();
+                initInvoker('W');
+            }
+
+
+
+            //--------------------------------------------------------------------------------------------------------------
+
+            function f_listar(dependencia) {
+                var reporte = "REV_01";
+
+                if (isEq(dependencia, SEL_DEPENDENCIA_VACIO)) {
                     $("#listado").html("");
-                     alert("vacio");
-                    return; 
+                    alert("vacio");
+                    return;
                 }
-                var ruta = ctx_path.concat("/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=", 
-                                            new Date().getTime(), 
-                                            "&reporte=",reporte,
-                                            "&dependencia=", 
-                                            dependencia 
-                                            );
-                
-                $("#listado").load(ruta, function(){
+                var ruta = ctx_path.concat("/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=",
+                        new Date().getTime(),
+                        "&reporte=", reporte,
+                        "&dependencia=",
+                        dependencia
+                        );
+
+                $("#listado").load(ruta, function () {
                     $('#example').DataTable();
                 });
             }
@@ -401,7 +408,7 @@
                             "&v_destinatario=", v_destinatario);
                     $("#modalDestinatario").load(ruta, function () {
                         $('#distri').DataTable();
-                        
+
                     });
                 }
             }
@@ -432,8 +439,8 @@
                     document.all.AjaxPieDestinatario.innerHTML = ajaxPieDistribucion.responseText;
                 }
             }
-            
-             function f_cerrar() {
+
+            function f_cerrar() {
                 $('#miModalDistribucion').modal('hide');
                 var reporte = "DIST_06";
                 var ruta = ctx_path.concat("/gedad/revisardoc/I_PorRevisar_Distribucion_ajax.jsp?pasacache=", new Date().getTime(),
@@ -731,7 +738,8 @@
                 var ruta = ctx_path.concat("/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=", new Date().getTime(),
                         "&reporte=", OPC_MUESTRA_ENVIO,
                         "&firma=", firma,
-                        "&recibe=", recibe);
+                        "&recibe=", recibe,
+                        "&formulario=firmar");
                 $("#div_cbx_firmado").load(ruta, function () {
                     var usuario_logeado = "<%=objBeanU.getVUSUARIO_CODIGO()%>";
                     if (document.all.cbo_firmadoPor.value === document.all.cbo_revisadoPor.value &&
@@ -825,7 +833,7 @@
                     alert("Falta Seleccionar Combo A la firma");
                 }
             }
-            
+
             function b64toBlob(b64Data, contentType, sliceSize) {
                 contentType = contentType || '';
                 sliceSize = sliceSize || 512;
@@ -901,10 +909,10 @@
 
 
             function f_tranferencia(accion) {
-                alert("veremos que accion hara "+accion);
-                
-                 var NroUnicoOF  = document.all.txt_nro_unico_OF.value;  
-                    alert("NroUnicoOF--"+NroUnicoOF);
+                alert("veremos que accion hara " + accion);
+
+                var NroUnicoOF = document.all.txt_nro_unico_OF.value;
+                alert("NroUnicoOF--" + NroUnicoOF);
                 var cboDependencia = document.all.cboDependencia.value;
                 var cbo_OrgDependencia = document.all.cbo_OrgDependencia.value;
                 var txt_Clave = document.all.txt_Clave.value;
@@ -933,10 +941,10 @@
                             "&cbo_revisadoPor=", cbo_revisadoPor,
                             "&cbo_firmadoPor=", cbo_firmadoPor,
                             "&txA_Obs_Enviar=", txA_Obs_Enviar,
-                            "&NroUnicoOF=",NroUnicoOF,
+                            "&NroUnicoOF=", NroUnicoOF,
                             "&accion_enviar=", accion_enviar);
                     $("#modalMostarAnexos").load(ruta, function () {
-                        
+
                         $('#miModalEnvio').modal('hide');
                         $('#miModalREVISAR').modal('hide');
                         var posTO = document.all.cbo_revisadoPor.options.selectedIndex;
@@ -950,7 +958,7 @@
                         $("#listado").load(ruta, function () {
                             $('#example').DataTable();
                         });
-                        
+
                     });
                 }
             }
@@ -962,57 +970,57 @@
                 }
             }
 
-           
-            function f_devolverdocumento(){
-                
-             var cbo_OrgDependencia  = document.all.cbo_OrgDependencia.value;
-             var txt_Clave  = document.all.txt_Clave.value;
-             var cboArchivoIndicativo  = document.all.cboArchivoIndicativo.value;
-             var txt_Asunto  = btoa(document.all.txt_Asunto.value);        
-             var cuerpo = btoa(btoa(CKEDITOR.instances.cuerpo.getData())); 
-             var cbo_Prioridad  = document.all.cbo_Prioridad.value;            
-             var txA_Obs_Enviar  = btoa(document.all.txA_Obs.value) ;                      
-              
-                        
-            var accion_enviar="DEVOLVER";
 
-            var reporte = "REV_04";         
-            if (window.XMLHttpRequest) {
-                ajaxEnviaRevisar = new XMLHttpRequest();
-            } else {
-                ajaxEnviaRevisar = new ActiveXObject("Microsoft.XMLHTTP");
+            function f_devolverdocumento() {
+
+                var cbo_OrgDependencia = document.all.cbo_OrgDependencia.value;
+                var txt_Clave = document.all.txt_Clave.value;
+                var cboArchivoIndicativo = document.all.cboArchivoIndicativo.value;
+                var txt_Asunto = btoa(document.all.txt_Asunto.value);
+                var cuerpo = btoa(btoa(CKEDITOR.instances.cuerpo.getData()));
+                var cbo_Prioridad = document.all.cbo_Prioridad.value;
+                var txA_Obs_Enviar = btoa(document.all.txA_Obs.value);
+
+
+                var accion_enviar = "DEVOLVER";
+
+                var reporte = "REV_04";
+                if (window.XMLHttpRequest) {
+                    ajaxEnviaRevisar = new XMLHttpRequest();
+                } else {
+                    ajaxEnviaRevisar = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                ajaxEnviaRevisar.onreadystatechange = funcionCallbackEnviaRevisar;
+                var ruta = "<%= request.getContextPath()%>/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=" + new Date().getTime() + "&reporte=" + reporte +
+                        "&cbo_OrgDependencia=" + cbo_OrgDependencia +
+                        "&txt_Clave=" + txt_Clave +
+                        "&cboArchivoIndicativo=" + cboArchivoIndicativo +
+                        "&txt_Asunto=" + txt_Asunto +
+                        "&txt_cuerpo=" + cuerpo +
+                        "&cbo_Prioridad=" + cbo_Prioridad +
+                        "&txA_Obs_Enviar=" + txA_Obs_Enviar +
+                        "&accion_enviar=" + accion_enviar;
+                ajaxEnviaRevisar.open("GET", ruta, true);
+                ajaxEnviaRevisar.send("");
+
+                $('#miModalEnvio').modal('hide');
+                $('#miModalREVISAR').modal('hide');
+                $('#miModalDevolver').modal('hide');
+
+                $('#miModalAlertaDevolver').modal({backdrop: 'static', keyboard: false});
+
+                setTimeout(f_listar(cboDependencia), 2000);
+
+
+
             }
-           ajaxEnviaRevisar.onreadystatechange = funcionCallbackEnviaRevisar;
-           var ruta = "<%= request.getContextPath()%>/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=" + new Date().getTime() +"&reporte=" + reporte+
-                   "&cbo_OrgDependencia=" + cbo_OrgDependencia+
-                   "&txt_Clave=" + txt_Clave+
-                   "&cboArchivoIndicativo=" + cboArchivoIndicativo+
-                   "&txt_Asunto=" + txt_Asunto+
-                   "&txt_cuerpo=" + cuerpo+
-                   "&cbo_Prioridad=" + cbo_Prioridad+                                  
-                   "&txA_Obs_Enviar=" + txA_Obs_Enviar+
-                   "&accion_enviar=" + accion_enviar;
-           ajaxEnviaRevisar.open("GET", ruta, true);
-           ajaxEnviaRevisar.send(""); 
-
-              $('#miModalEnvio').modal('hide');
-              $('#miModalREVISAR').modal('hide');
-              $('#miModalDevolver').modal('hide');
-
-             $('#miModalAlertaDevolver').modal({backdrop: 'static', keyboard: false}); 
-
-           setTimeout(f_listar(cboDependencia),2000);
-                              
-                        
-              
-          }
 
 
             function f_Borrador() {
 
             }
             function f_Abredevolver() {
-                 $('#miModalObs').modal('hide');      
+                $('#miModalObs').modal('hide');
                 $('#miModalDevolver').modal({backdrop: 'static', keyboard: false});
                 $('#miModalEnvio').modal('hide');
 
@@ -1023,8 +1031,8 @@
                 $('#miModalObs').modal('hide');
             }
             function f_cerrar_moDistribucion() {
-                $('#miModalDistribucion').modal('hide');            
-                
+                $('#miModalDistribucion').modal('hide');
+
             }
             function f_cerrar_moReferencia() {
                 $('#miModalReferencia').modal('hide');
@@ -1049,18 +1057,18 @@
                         "&cod_interno=", cod_interno);
                 $("#listaAnexos").load(ruta, function () {});
             }
-            
+
             function f_cerrar_verAnexos() {
                 $('#miModalVerAnexos').modal('hide');
             }
-            
+
             function f_cerrar_moAlerta() {
                 $('#miModalAlerta').modal('hide');
             }
-            
-            function f_cerrar_moDetalleEnvio(){
-                 $('#miModalEnvio').modal('hide');
-                document.all.txh_accion_botones.value="";
+
+            function f_cerrar_moDetalleEnvio() {
+                $('#miModalEnvio').modal('hide');
+                document.all.txh_accion_botones.value = "";
             }
 
         </script>
@@ -1134,8 +1142,8 @@
                     <tr>
                         <td valign="top"> <div id="listado">
                             <%
-                                    ArrayList listaPorRevisar = (ArrayList) objFD.ObtenerListaDocumentosXFirmar("A",objBeanU.getVUSUARIO_CODIGO(), objBeanU.getCUSUARIO_COD_ORG());
-                                    
+                                ArrayList listaPorRevisar = (ArrayList) objFD.ObtenerListaDocumentosXFirmar("A", objBeanU.getVUSUARIO_CODIGO(), objBeanU.getCUSUARIO_COD_ORG());
+
 
                             %>  
                             <table class="display" width="90%" border="1"  id="example">
@@ -1143,7 +1151,7 @@
                                     <tr style="background-color:#B0B199">
                                         <th ><div align="center">AÑO</div></th>
                                         <th><div align="center">FECHA_ENVIO</div></th>
-                                         <th bgcolor="#CCD272"><div align="center">CODIGO GEDAD</div></th>
+                                        <th bgcolor="#CCD272"><div align="center">CODIGO GEDAD</div></th>
                                         <th><div align="center">DEPENDENCIA</div></th>
                                         <th><div align="center">CLASE</div></th>                                       
                                         <th><div align="center">ASUNTO</div></th>
@@ -1153,8 +1161,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <%
-                                        for (int i = 0; i < listaPorRevisar.size(); i++) {
+                                    <%                                        for (int i = 0; i < listaPorRevisar.size(); i++) {
                                             BeanFirmarDocumento objBeanD = (BeanFirmarDocumento) listaPorRevisar.get(i);
                                     %>
                                     <tr>
@@ -1493,8 +1500,8 @@
                 </tr>
             </table>
         </div>
-         <!-- COMPONENTE RENIEC PARA LA AUTENTICACION POR API -->
-                            <input type="hidden" id="argumentos" value="" />
-                            <div id="addComponent"></div>
+        <!-- COMPONENTE RENIEC PARA LA AUTENTICACION POR API -->
+        <input type="hidden" id="argumentos" value="" />
+        <div id="addComponent"></div>
     </body>
 </html>

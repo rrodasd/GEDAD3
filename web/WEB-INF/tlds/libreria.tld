@@ -11,9 +11,9 @@
     <tag-class>comun.tag.ComboUsuarioInf</tag-class>
   </tag>
   <tag>
-        <name>ComboEncargaturaDecreto</name>
-        <tag-class>comun.tag.ComboEncargaturaDecreto</tag-class>
-    </tag>
+    <name>ComboEncargaturaDecreto</name>
+    <tag-class>comun.tag.ComboEncargaturaDecreto</tag-class>
+  </tag>
   <tag>
     <name>ListaClasificacion</name>
     <tag-class>comun.tag.ListaClasificacion</tag-class>
@@ -334,58 +334,37 @@
     <name>ListaClases</name>
     <tag-class>comun.tag.ListaClases</tag-class>
   </tag>
-  
-  
-    <tag>
+  <tag>
     <name>RB_TipoOrganizacion</name>
     <tag-class>comun.tag.RB_TipoOrganizacion</tag-class>
   </tag>
-  
-<!--Combos para REVISAR CON MODAL -->
-<tag>
+  <!--Combos para REVISAR CON MODAL -->
+  <tag>
     <name>TagComboDistribucion</name>
     <tag-class>comun.tag.TagComboDistribucion</tag-class>
   </tag>
-  
-  
   <tag>
     <name>TagComboOrganizacionCabecera</name>
     <tag-class>comun.tag.TagComboOrganizacionCabecera</tag-class>
   </tag>
-
- <tag>
+  <tag>
     <name>TagRBTipoOrganizacion</name>
     <tag-class>comun.tag.TagRBTipoOrganizacion</tag-class>
   </tag>
-
-<tag>
+  <tag>
     <name>TagComboUsuarioNivelInferior</name>
     <tag-class>comun.tag.TagComboUsuarioNivelInferior</tag-class>
   </tag>
-<tag>
+  <tag>
     <name>TagDescripcionPeriodoActual</name>
     <tag-class>comun.tag.TagDescripcionPeriodoActual</tag-class>
   </tag>
-  
   <tag>
     <name>TagDescripcionGuarnicion</name>
     <tag-class>comun.tag.TagDescripcionGuarnicion</tag-class>
   </tag>
-
- <tag>
+  <tag>
     <name>TagListaPrioridad</name>
     <tag-class>comun.tag.TagListaPrioridad</tag-class>
   </tag>
-
-<tag>
-    <name>TagFirmadoPor</name>
-    <tag-class>comun.tag.TagFirmadoPor</tag-class>
-  </tag>
-  
-  <tag>
-    <name>TagRevisadoPor</name>
-    <tag-class>comun.tag.TagRevisadoPor</tag-class>
-  </tag>
-
-  
 </taglib>
