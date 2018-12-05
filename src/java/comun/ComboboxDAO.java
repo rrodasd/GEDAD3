@@ -15,8 +15,8 @@ public interface ComboboxDAO {
     public abstract Collection obtenerListaOrganizacionExterna() throws Exception;
     public abstract Collection obtenerListaOrganizacionEjercito(String codigo_org, String dato) throws Exception;
     public abstract Collection obtenerPrioridades() throws Exception;
-    public abstract Collection obtenerfirmadoPor(String nombreUsuario) throws Exception;
-    public abstract Collection obtenerRevisadorPor(String nombreUsuario) throws Exception;
+    public abstract Collection obtenerfirmadoPor(String nombreUsuario,String formulario) throws Exception;
+    public abstract Collection obtenerRevisadorPor(String nombreUsuario,String formulario) throws Exception;
     public abstract Collection obtenerRevisadorPor_mismo(String nombreUsuario) throws Exception;
     //Mesa de Parte
     public abstract Collection obtenerPeriodo() throws Exception;

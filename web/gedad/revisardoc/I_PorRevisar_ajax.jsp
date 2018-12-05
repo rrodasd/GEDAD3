@@ -38,7 +38,7 @@
     ComboboxDAO objCombobox = objDF.getComboboxDAO();
 
     session = request.getSession(true);
-     ServletContext sec2=session.getServletContext();
+    ServletContext sec2 = session.getServletContext();
     BeanUsuarioAD objbean = (BeanUsuarioAD) session.getAttribute("usuario");
 
     ArrayList ListarDestinatario = null;
@@ -55,10 +55,10 @@
 %>
 <table class="display" width="90%" border="1"  id="example">
     <thead >
-         <tr style="background-color:#B0B199">
+        <tr style="background-color:#B0B199">
             <th ><div align="center">AÑO</div></th>
             <th><div align="center">FECHA_ENVIO</div></th>
-             <th bgcolor="#CCD272"><div align="center">CODIGO GEDAD</div></th>
+            <th bgcolor="#CCD272"><div align="center">CODIGO GEDAD</div></th>
             <th><div align="center">DEPENDENCIA</div></th>
             <th><div align="center">CLASE</div></th>                                       
             <th><div align="center">ASUNTO</div></th>
@@ -74,16 +74,16 @@
 
         %>
         <tr>
-        <td><%=objBeanD.getCDOCUMENTO_PERIODO()%></td>
-        <td><%=objBeanD.getDHDOCUMENTO_FECH_ESTADO()%></td>
-        <td bgcolor="#CCD272"><%=objBeanD.getCDOCUMENTO_COD_DOC_INT()%></td>
-        <td><%=objBeanD.getVHDOCUMENTO_COD_USU_ENV()%></td>                                                  
-        <td><%=objBeanD.getVCLASE_NOM_CORTO()%></td>                                     
-        <td><%=objBeanD.getVDOCUMENTO_ASUNTO()%></td>
-        <td><%=objBeanD.getDESTINATARIO()%></td>
-        <td><%=objBeanD.getVHDOCUMENTO_OBSERVACION()%></td>
-        <td><div align="center"><a href="javascript:f_visualizardoc('<%=objBeanD.getCDOCUMENTO_COD_DOC_INT()%>','<%=objBeanD.getCDOCUMENTO_CLASE()%>','<%=objBeanD.getCDOCUMENTO_PERIODO()%>','<%=objBeanD.getCHDOCUMENTO_SECUENCIA()%>','<%=objBeanD.getVHDOCUMENTO_OBSERVACION()%>');" ><img src="<%= request.getContextPath()%>/imagenes/icono/verdoc.png" height="25px" width="25px" /></a></div></td>
-    </tr>
+            <td><%=objBeanD.getCDOCUMENTO_PERIODO()%></td>
+            <td><%=objBeanD.getDHDOCUMENTO_FECH_ESTADO()%></td>
+            <td bgcolor="#CCD272"><%=objBeanD.getCDOCUMENTO_COD_DOC_INT()%></td>
+            <td><%=objBeanD.getVHDOCUMENTO_COD_USU_ENV()%></td>                                                  
+            <td><%=objBeanD.getVCLASE_NOM_CORTO()%></td>                                     
+            <td><%=objBeanD.getVDOCUMENTO_ASUNTO()%></td>
+            <td><%=objBeanD.getDESTINATARIO()%></td>
+            <td><%=objBeanD.getVHDOCUMENTO_OBSERVACION()%></td>
+            <td><div align="center"><a href="javascript:f_visualizardoc('<%=objBeanD.getCDOCUMENTO_COD_DOC_INT()%>','<%=objBeanD.getCDOCUMENTO_CLASE()%>','<%=objBeanD.getCDOCUMENTO_PERIODO()%>','<%=objBeanD.getCHDOCUMENTO_SECUENCIA()%>','<%=objBeanD.getVHDOCUMENTO_OBSERVACION()%>');" ><img src="<%= request.getContextPath()%>/imagenes/icono/verdoc.png" height="25px" width="25px" /></a></div></td>
+        </tr>
         <%}%>
     </tbody>
 </table>
@@ -123,7 +123,7 @@
         }
 
         ListaAnexo = (ArrayList) objRD.obtenerFullAnexosXDocumento(periodo, codint);
-        System.out.println("cuantos  ListaAnexo-->" + ListaAnexo.size() + "<--");
+        //System.out.println("cuantos  ListaAnexo-->" + ListaAnexo.size() + "<--");
         if (ListaAnexo != null) {
             session.setAttribute("anexos", ListaAnexo);
         }
@@ -158,7 +158,7 @@
                 <div align="right" id="div_firma_digital" style="visibility: hidden">    
                     <table>
                         <tr>
-                         <td>
+                            <td>
                                 <img src="<%=request.getContextPath()%>/imagenes/icono/firma_digital.jpg" width="100px" height="60px" align="center" />
                         </td>
                         <td style="background: #808965">
@@ -169,7 +169,7 @@
             </div>
         </td>
     </tr>
-     <tr>
+    <tr>
         <td colspan="6">
             <div align="right" class="EstiloOF">
                 <input name="txt_Guarnicion" id="txt_Guarnicion" type="text" style="border:0px; text-align: right;" value="<lb:TagDescripcionGuarnicion></lb:TagDescripcionGuarnicion>" readonly="true" />,&nbsp;
@@ -180,7 +180,7 @@
             </div>
         </td>
     </tr>
-     <tr>
+    <tr>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -195,8 +195,8 @@
         <td colspan="3">
             <table width="100%">
                 <tr>
-                    
-                     <td width="10%" ><div id="div_Nro_Unico_OF"><input name="txt_nro_unico_OF"   type="text" class="form-control" size="3" readonly="false" value="00000"/></div></td>
+
+                    <td width="10%" ><div id="div_Nro_Unico_OF"><input name="txt_nro_unico_OF"   type="text" class="form-control" size="3" readonly="false" value="00000"/></div></td>
                     <td width="20%"><input name="txt_Clave" type="text" class="form-controlOF" readonly="true" value="<%=objBeanRD.getVDOCUMENTO_CLAVE_INDIC()%>" size="10"/></td>
                     <td width="70%"><select name="cboArchivoIndicativo" class="form-controlOF">
                             <%
@@ -226,7 +226,7 @@
             </div>
         </td>
     </tr>
-     <tr>
+    <tr>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
@@ -270,7 +270,7 @@
             </label>
         </td>
     </tr>
-     <tr>
+    <tr>
         <td>&nbsp;</td>
         <td height="216" colspan="5">
             <table width="100%" height="212" border="0">
@@ -292,14 +292,13 @@
                                             }
                                         })
                                     };
-
                                 });
-
                             </script>
                         </div>
                     </td>
                 </tr>
-            </table></td>
+            </table>
+         </td>
     </tr>
     <tr>
         <td width="20">&nbsp;</td>
@@ -417,7 +416,7 @@
             &nbsp;
         </td>
     </tr>
-    </table>
+</table>
 <%
     }
 
@@ -506,25 +505,24 @@
     System.out.println("referencias" + referencias.size());*/
 
     try {
-      
-                if(accion_enviar.equals("FIRMADIGITAL")){
 
-                String token = null; 
-                token = (String)sec2.getAttribute("tokenID_Of");
-                System.out.println("----------------------- vamos tokennnn------------------------------------------"+token);
-                beanrevisarDocumento.setTokenOFicio(token);
-                //Nro unico de OFICIo
-                String NroUnicoOF=request.getParameter("NroUnicoOF");
-                beanrevisarDocumento.setNroUnicoOF(NroUnicoOF);    
+        if (accion_enviar.equals("FIRMADIGITAL")) {
 
+            String token = null;
+            token = (String) sec2.getAttribute("tokenID_Of");
+            //System.out.println("----------------------- vamos tokennnn------------------------------------------"+token);
+            beanrevisarDocumento.setTokenOFicio(token);
+            //Nro unico de OFICIo
+            String NroUnicoOF = request.getParameter("NroUnicoOF");
+            beanrevisarDocumento.setNroUnicoOF(NroUnicoOF);
 
-                String NumeroDoc = objRevisaDocumento.FirmaDigitalDocumento(beanrevisarDocumento,referencias,distribuciones);
-                System.out.println(" NumeroDoc-------" + NumeroDoc);
+            String NumeroDoc = objRevisaDocumento.FirmaDigitalDocumento(beanrevisarDocumento, referencias, distribuciones);
+            //System.out.println(" NumeroDoc-------" + NumeroDoc);
 
-             }else{
+        } else {
 
-                 objRevisaDocumento.EnviarRevisarDocumento(beanrevisarDocumento, referencias, distribuciones);
-                }
+            objRevisaDocumento.EnviarRevisarDocumento(beanrevisarDocumento, referencias, distribuciones);
+        }
     } catch (SQLException e) {
         // TODO Auto-generated catch block
         e.printStackTrace();
@@ -643,6 +641,7 @@
 
     String firmado_por = request.getParameter("firma");
     String revisado_por = request.getParameter("recibe");
+    String formulario = request.getParameter("formulario");
 
 
 %>
@@ -656,7 +655,7 @@
             <select name="cbo_firmadoPor" class="form-control" id="cbo_firmadoPor" onchange="f_habilitar('firmado_por')">
                 <%
 
-                    Iterator iterator = objCombobox.obtenerfirmadoPor(objbean.getCUSUARIO_COD_ORG()).iterator();
+                    Iterator iterator = objCombobox.obtenerfirmadoPor(objbean.getCUSUARIO_COD_ORG(), formulario).iterator();
                     while (iterator.hasNext()) {
                         BeanUsuarioAD bean = (BeanUsuarioAD) iterator.next();
                         String seleccion = (bean.getVUSUARIO_CODIGO().equals(firmado_por)) ? "selected" : "";
@@ -677,7 +676,7 @@
         <td>                                                       
             <select name="cbo_revisadoPor" class="form-control" id="cbo_revisadoPor" onchange="f_habilitar('revisado_por')">
                 <%
-                    Iterator iterator1 = objCombobox.obtenerRevisadorPor(objbean.getCUSUARIO_COD_ORG()).iterator();
+                    Iterator iterator1 = objCombobox.obtenerRevisadorPor(objbean.getCUSUARIO_COD_ORG(), formulario).iterator();
                     while (iterator1.hasNext()) {
                         BeanUsuarioAD bean = (BeanUsuarioAD) iterator1.next();
                         String seleccion = (bean.getVUSUARIO_CODIGO().equals(revisado_por)) ? "selected" : "";
@@ -713,30 +712,30 @@
 <button class="btn btn-info btn-info" style="width: 250px" type="button" onclick="javascript:f_tranferencia('REVISAR');"><b>ENVIAR PARA REVISAR</b></button>              
 
 <%
-        }
+    }
 
-    }else if (reporte.equals("REV_08")) { 
- //1. Obtener el año actual para guaradar en la BD
-        Calendar fecha1 = java.util.Calendar.getInstance();
-        String periodo = fecha1.get(java.util.Calendar.YEAR) + "";
-        periodo = periodo;
-        String  nroUnicoDoc =null;
-        
-        String claseDoc="0001";              
-      
-        try {  
-            nroUnicoDoc = objRD.obtenerNroUnicoDoc(periodo,claseDoc); 
+} else if (reporte.equals("REV_08")) {
+    //1. Obtener el año actual para guaradar en la BD
+    Calendar fecha1 = java.util.Calendar.getInstance();
+    String periodo = fecha1.get(java.util.Calendar.YEAR) + "";
+    periodo = periodo;
+    String nroUnicoDoc = null;
 
-            session.setAttribute("nroUnicoDoc", nroUnicoDoc);
-           
-        } catch (Exception ex) {
-           
-        }
-        
-        System.out.println("nroUnicoDoc------------------------------->"+nroUnicoDoc);
+    String claseDoc = "0001";
+
+    try {
+        nroUnicoDoc = objRD.obtenerNroUnicoDoc(periodo, claseDoc);
+
+        session.setAttribute("nroUnicoDoc", nroUnicoDoc);
+
+    } catch (Exception ex) {
+
+    }
+
+    System.out.println("nroUnicoDoc------------------------------->" + nroUnicoDoc);
 
 %>
- <input name="txt_nro_unico_OF" id="txt_nro_unico_OF" type="text" class="form-control" size="3" readonly="false" value="<%=nroUnicoDoc %>" />
+<input name="txt_nro_unico_OF" id="txt_nro_unico_OF" type="text" class="form-control" size="3" readonly="false" value="<%=nroUnicoDoc%>" />
 <%
     }
 %>

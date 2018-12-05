@@ -410,7 +410,8 @@ public class OracleComboboxDAO implements ComboboxDAO {
 
     }
 
-    public Collection obtenerfirmadoPor(String nombreUsuario) throws Exception {
+    @Override
+    public Collection obtenerfirmadoPor(String nombreUsuario, String formulario) throws Exception {
 
         Collection c = new ArrayList();
         try {
@@ -423,7 +424,7 @@ public class OracleComboboxDAO implements ComboboxDAO {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
             cs.setString(2, "J");
             cs.setString(3, nombreUsuario);
-            cs.setString(4, "");
+            cs.setString(4, formulario);
             cs.setString(5, "");
             cs.setString(6, "");
             cs.setString(7, "");
@@ -453,7 +454,7 @@ public class OracleComboboxDAO implements ComboboxDAO {
     }
 
     @Override
-    public Collection obtenerRevisadorPor(String nombreUsuario) throws Exception {
+    public Collection obtenerRevisadorPor(String nombreUsuario,String formulario) throws Exception {
 
         Collection c = new ArrayList();
         try {
@@ -466,7 +467,7 @@ public class OracleComboboxDAO implements ComboboxDAO {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
             cs.setString(2, "K");
             cs.setString(3, nombreUsuario);
-            cs.setString(4, "");
+            cs.setString(4, formulario);
             cs.setString(5, "");
             cs.setString(6, "");
             cs.setString(7, "");

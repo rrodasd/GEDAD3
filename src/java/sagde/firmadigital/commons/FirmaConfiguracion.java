@@ -37,7 +37,7 @@ public class FirmaConfiguracion {
      * @return 
      */
     public static String paramWeb(String protocolo, String urlPDF, String serverPath, String pdfName) throws JsonProcessingException{
-         System.out.println("---------argumentos :protocol------"+protocolo+"--serverPath:>"+serverPath+"--documentName:>"+pdfName+"-urlPDF->"+urlPDF);
+         //System.out.println("---------argumentos :protocol------"+protocolo+"--serverPath:>"+serverPath+"--documentName:>"+pdfName+"-urlPDF->"+urlPDF);
         
         ObjectMapper params = new ObjectMapper();
         Map<String, String> map = new HashMap<>();
@@ -68,7 +68,7 @@ public class FirmaConfiguracion {
         
         String stringParams = params.writeValueAsString(map);
         stringParams = Base64.getEncoder().encodeToString(stringParams.getBytes(StandardCharsets.UTF_8));
-        System.out.println(stringParams);
+        //System.out.println("stp: x"+stringParams+"x");
         return stringParams;
         
     }
