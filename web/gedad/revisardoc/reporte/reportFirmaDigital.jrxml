@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportFirmaDigital" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ba22362-ac2a-4aab-a882-c5347079c2a1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="8c9cfd68-6e59-4937-97de-f04257200129"/>
+	<parameter name="ACCION" class="java.lang.String"/>
+	<parameter name="CIP" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select sysdate from dual]]>
+	</queryString>
+	<field name="SYSDATE" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="22" y="16" width="316" height="49" uuid="c3013b27-366a-46da-8dcf-dea7ba8861c0"/>
+				<textElement>
+					<font fontName="Arial" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[rosariooooooooooooooooooooooooo]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="171" y="44" width="100" height="20" uuid="eafeab80-1515-4f3b-908a-68ee9861c0a3"/>
+				<textElement>
+					<font fontName="Arial Black"/>
+				</textElement>
+				<text><![CDATA[oficoooo]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="247" y="42" width="100" height="20" uuid="661d2850-ca07-407d-a2c0-ec8e657377b6"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CIP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="353" y="74" width="100" height="20" uuid="39f3139c-a87b-4ed9-9c7c-090c8ff9d534"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ACCION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="171" y="0" width="265" height="30" uuid="24307811-5804-45c3-a15b-12bbd832c6f2"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[hola Ireport]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

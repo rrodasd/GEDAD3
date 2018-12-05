@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="I_Oficio" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="56" bottomMargin="56" uuid="7bb91a49-ba4a-44a3-b5e7-f8d13edfe474">
+	<property name="ireport.layers" value="##Mon Sep 03 17:28:07 COT 2018\nlayer.0.name=Background\nlayer.0.visible=true\nlayer.0.id=0"/>
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="96"/>
+	<parameter name="ORGINT-ORIGEN" class="java.lang.String"/>
+	<parameter name="NOMBREANIO" class="java.lang.String"/>
+	<parameter name="GUARNICION" class="java.lang.String"/>
+	<parameter name="FECHA" class="java.lang.String"/>
+	<parameter name="ORGINT-REDACTA" class="java.lang.String"/>
+	<parameter name="ARCHIVO" class="java.lang.String"/>
+	<parameter name="GRADO-DISTRIBUCION" class="java.lang.String"/>
+	<parameter name="CARGO-DISTRIBUCION" class="java.lang.String"/>
+	<parameter name="ASUNTO" class="java.lang.String"/>
+	<parameter name="CUERPO" class="java.lang.String"/>
+	<parameter name="RUTA" class="java.lang.String"/>
+	<parameter name="DISTRIBUCION_ORIG" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="DISTRIBUCION_CC" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="SLASH" class="java.lang.String"/>
+	<parameter name="CARGO-FIRMANTE" class="java.lang.String"/>
+	<parameter name="NROUNICOOF" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select sysdate from dual]]>
+	</queryString>
+	<field name="SYSDATE" class="java.sql.Timestamp"/>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="40" splitType="Stretch">
+			<rectangle>
+				<reportElement x="44" y="0" width="73" height="39" forecolor="#E03032" backcolor="#E03032" uuid="fe1aaa94-40c9-475d-8708-627803fef3fe"/>
+			</rectangle>
+			<image>
+				<reportElement x="0" y="0" width="44" height="39" uuid="334506e5-fc65-4e01-9843-30f8dc949d09"/>
+				<imageExpression><![CDATA[$P{RUTA}+$P{SLASH}+"imagenes"+$P{SLASH}+"escudos"+$P{SLASH}+"escudo.jpg"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="118" y="0" width="73" height="39" forecolor="#2F3130" backcolor="#2F3130" uuid="b584f6e9-7186-4741-8189-90e393a3a862"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="192" y="0" width="73" height="39" forecolor="#565656" backcolor="#565656" uuid="6b8fe1aa-6f1b-47d2-9f6b-dfb7f80e7621"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="265" y="0" width="218" height="39" forecolor="#ADADAD" backcolor="#ADADAD" uuid="0f2052c2-8da5-4e3a-b25e-5e76ef5bf79f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="48" y="0" width="69" height="39" forecolor="#FFFFFF" uuid="e9292bb8-c8bb-4893-b00b-d04f050822b5"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[PERÚ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="122" y="0" width="69" height="39" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="da1b55f7-4242-4d88-b7a9-96f807c0d5a3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Ministerio
+de Defensa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="196" y="0" width="69" height="39" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="da00de79-0655-4a96-bfc4-b2ce7ed24eca"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Ejército
+del Perú]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Transparent" x="271" y="0" width="212" height="39" forecolor="#FFFFFF" backcolor="#FFFFFF" uuid="f48db78e-176d-4802-9ffe-7e959e4a8d3d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ORGINT-ORIGEN}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="140" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="483" height="20" uuid="554a8c80-2f59-4c99-9c93-a0ca9dbfd9a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NOMBREANIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="60" width="483" height="20" uuid="b6c26263-cbb0-4283-b6f6-48a42fb69350"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{GUARNICION}+", "+$P{FECHA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="80" width="48" height="20" uuid="3ffc2f38-511f-4f25-a35b-b248c08a67b4"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Oficio N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="99" y="80" width="384" height="20" uuid="ecdb7ef6-06f9-411e-acb1-403092223bd5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{ORGINT-REDACTA}+"/"+$P{ARCHIVO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="100" width="48" height="20" uuid="fed00823-1a56-4990-88af-e98f0e73d37e"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Señor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="100" width="5" height="20" uuid="8f5a01cb-d528-4520-890c-f845cc99c324"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="53" y="100" width="430" height="20" uuid="8bddd0b8-bfbc-4917-a578-1b90d1e6002a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{GRADO-DISTRIBUCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="53" y="120" width="430" height="20" uuid="1e768404-e028-4572-8013-b31a3ff93f5f"/>
+				<textFieldExpression><![CDATA[$P{CARGO-DISTRIBUCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="53" y="80" width="46" height="20" uuid="f46aa86e-5228-45f3-990a-e90886c7e7ef"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{NROUNICOOF}+"/"]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="20">
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="53" y="0" width="430" height="20" uuid="a2ceff0e-cc12-4be8-82f6-0a430135b43c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{ASUNTO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="48" height="20" uuid="3fda2d4a-870e-45e7-aa11-74c8de64cd79"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Asunto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="0" width="5" height="20" uuid="b54f306b-2872-4fb6-8cb9-cbbc49a4fbf9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+		<band height="20">
+			<staticText>
+				<reportElement x="0" y="0" width="48" height="20" uuid="5024a258-4950-45ae-8a8a-379be9f112da"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Ref]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="48" y="0" width="5" height="20" uuid="3c223a09-965f-47e7-91cc-c4697fc58d36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+		</band>
+		<band height="50">
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="483" height="50" uuid="4aea3f16-107a-4455-a9fc-1a9240d79245"/>
+				<textElement textAlignment="Justified" markup="html">
+					<paragraph firstLineIndent="55"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CUERPO}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="20">
+			<staticText>
+				<reportElement x="196" y="0" width="287" height="20" uuid="ac8204da-1b13-4118-9b64-6278e38c21c1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Dios guarde a Ud.]]></text>
+			</staticText>
+		</band>
+		<band height="22">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="8b54046c-062b-4631-811a-7d0230414edf"/>
+				<textElement verticalAlignment="Middle">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DISTRIBUCIÓN:]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="20" width="483" height="0" uuid="b93ad05c-a79d-4429-b9b1-b6b2d5f70f33"/>
+				<dataSourceExpression><![CDATA[$P{DISTRIBUCION_ORIG}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{RUTA} + $P{SLASH}+"gedad"+$P{SLASH}+"formulardoc"+$P{SLASH}+"I_Oficio_DistOrig.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="2">
+			<subreport>
+				<reportElement x="0" y="0" width="483" height="1" uuid="0f56fcf3-bcff-48d9-ba52-bb9fa3e0bd08"/>
+				<dataSourceExpression><![CDATA[$P{DISTRIBUCION_CC}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{RUTA} + $P{SLASH}+"gedad"+$P{SLASH}+"formulardoc"+$P{SLASH}+"I_Oficio_DistCC.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24">
+			<image>
+				<reportElement x="380" y="0" width="103" height="22" uuid="b2f8e136-5539-437a-a319-df131672eaf6"/>
+				<imageExpression><![CDATA[$P{RUTA}+$P{SLASH}+"imagenes"+$P{SLASH}+"escudos"+$P{SLASH}+"epp-logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageFooter>
+</jasperReport>

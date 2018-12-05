@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="I_Oficio_DistOrig" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="992f4f02-428b-4cd5-98d3-a8d8b3efa0e4">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="USUARIO" class="java.lang.String"/>
+	<parameter name="INTERNA" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT	TMP.VTEMP_NOMBRE
+FROM	SAGDE_TEMPORAL TMP
+WHERE	TMP.VTEMP_USUARIO = $P{USUARIO} AND
+	TMP.CTEMP_CODORG = $P{INTERNA} AND
+	TMP.CTEMP_TIPO = 'A'
+ORDER BY 	TMP.CTEMP_SECUENCIA ASC
+]]>
+	</queryString>
+	<field name="VTEMP_NOMBRE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="555" height="20" uuid="f2c290eb-1ebe-486c-9431-e24b9725fcfd"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["- "+$F{VTEMP_NOMBRE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!-- LOGIN -->
+    <servlet>
+        <servlet-name>ServletLogin</servlet-name>
+        <servlet-class>sagde.login.ServletLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletLogin</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletMenu</servlet-name>
+        <servlet-class>sagde.login.ServletMenu</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletMenu</servlet-name>
+        <url-pattern>/menu</url-pattern>
+    </servlet-mapping>
+    <!-- ***************************MODULOS REGISTRAR DOCUMENTOS********************************** -->
+   
+    <servlet>
+        <servlet-name>ServletMostrarPDF_MP</servlet-name>
+        <servlet-class>sagde.registrardoc.ServletMostrarPDF_MP</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletMostrarPDF_MP</servlet-name>
+        <url-pattern>/mostrarPDF_MP</url-pattern>
+    </servlet-mapping>
+   
+   
+    <servlet>
+        <servlet-name>ServletGrabaMP</servlet-name>
+        <servlet-class>sagde.registrardoc.ServletGrabaMP</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletGrabaMP</servlet-name>
+        <url-pattern>/GrabarMP</url-pattern>
+    </servlet-mapping>
+
+ <servlet>
+        <servlet-name>ServletGrabarReferencia</servlet-name>
+        <servlet-class>sagde.registrardoc.ServletGrabarReferencia</servlet-class>
+    </servlet>    
+    <servlet-mapping>
+        <servlet-name>ServletGrabarReferencia</servlet-name>
+        <url-pattern>/GrabarReferencia</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ListarDocumentoMP</servlet-name>
+        <servlet-class>sagde.registrardoc.ListarDocumentoMP </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarDocumentoMP</servlet-name>
+        <url-pattern> /listadocumento </url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>ListarDoc_Envio_MP</servlet-name>
+        <servlet-class>sagde.registrardoc.ListarDoc_Envio_MP</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarDoc_Envio_MP</servlet-name>
+        <url-pattern> /listadoc_envio </url-pattern>
+    </servlet-mapping>
+   
+   
+    <servlet>
+        <servlet-name>ServletVerPDFMP</servlet-name>
+        <servlet-class>sagde.registrardoc.ServletVerPDFMP</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletVerPDFMP</servlet-name>
+        <url-pattern>/verPdf</url-pattern>
+    </servlet-mapping>
+    <!-- ****************************FORMULAR DOCUMENTOS************************************** -->
+    <servlet>
+        <servlet-name>ServletFormularDocumento</servlet-name>
+        <servlet-class>sagde.formulardoc.ServletFormularDocumento</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletFormularDocumento</servlet-name>
+        <url-pattern>/formular</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>OficioVPServlet</servlet-name>
+        <servlet-class>sagde.formulardoc.OficioVPServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OficioVPServlet</servlet-name>
+        <url-pattern>/r_oficiovp</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>OficioEnvioServlet</servlet-name>
+        <servlet-class>sagde.formulardoc.OficioEnvioServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OficioEnvioServlet</servlet-name>
+        <url-pattern>/oficioEnvio</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletGrabarReferenciaFD</servlet-name>
+        <servlet-class>sagde.formulardoc.ServletGrabarReferenciaFD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletGrabarReferenciaFD</servlet-name>
+        <url-pattern>/grabarRefFD</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletGrabarAnexoFD</servlet-name>
+        <servlet-class>sagde.formulardoc.ServletGrabarAnexoFD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletGrabarAnexoFD</servlet-name>
+        <url-pattern>/grabarAnexoFD</url-pattern>
+    </servlet-mapping>
+    <!-- ****************************REGISTRO DE DISTRIBUCION************************************** -->
+  
+    <!-- ****************************DOCUMENTO RN BORRADOR************************************** -->
+     <servlet>
+        <servlet-name>ListarDocumentosBorrador</servlet-name>
+        <servlet-class>sagde.borrador.ListarDocumentosBorrador</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarDocumentosBorrador</servlet-name>
+        <url-pattern>/listaBorrador</url-pattern>
+    </servlet-mapping>
+   
+   
+    <!-- ****************************RECHAZAR DOCUMENTOS************************************** -->
+    
+    <servlet>
+        <servlet-name>ListarDocumentosRechazados</servlet-name>
+        <servlet-class>sagde.rechazardoc.ListarDocumentosRechazados</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarDocumentosRechazados</servlet-name>
+        <url-pattern>/listaRechazados</url-pattern>
+    </servlet-mapping>
+   
+  
+    <!-- ****************************REVISAR DOCUMENTOS************************************** -->
+    <servlet>
+        <servlet-name>ListarDocumentos</servlet-name>
+        <servlet-class>sagde.revisardoc.ListarDocumentos</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarDocumentos</servlet-name>
+        <url-pattern>/listarevisar</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ServletCapturaAnexos_RD</servlet-name>
+        <servlet-class>sagde.revisardoc.ServletCapturaAnexos_RD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletCapturaAnexos_RD</servlet-name>
+        <url-pattern>/capturaAnexos_RD</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>ServletMostrarAnexoAdjunto</servlet-name>
+        <servlet-class>sagde.revisardoc.ServletMostrarAnexoAdjunto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletMostrarAnexoAdjunto</servlet-name>
+        <url-pattern>/mostrarAnexoAdjunto</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>ServletMostrarReferencia</servlet-name>
+        <servlet-class>sagde.revisardoc.ServletMostrarReferencia</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletMostrarReferencia</servlet-name>
+        <url-pattern>/mostrarReferencia</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>OficioVPRevisarServlet</servlet-name>
+        <servlet-class>sagde.revisardoc.OficioVPRevisarServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OficioVPRevisarServlet</servlet-name>
+        <url-pattern>/r_oficioRevisarvp</url-pattern>
+    </servlet-mapping>
+    
+    <!-- ****************************FIRMAR DOCUMENTOS************************************** -->
+    <servlet>
+        <servlet-name>ListarDocFirmar</servlet-name>
+        <servlet-class>sagde.firmardoc.ListarDocFirmar</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarDocFirmar</servlet-name>
+        <url-pattern>/listaFirmar</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>Reporte_FirmaDigital</servlet-name>
+        <servlet-class>sagde.firmardoc.Reporte_FirmaDigital</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Reporte_FirmaDigital</servlet-name>
+        <url-pattern>/reporteFirmaDigital</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>OficioServlet</servlet-name>
+        <servlet-class>sagde.firmardoc.OficioServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OficioServlet</servlet-name>
+        <url-pattern>/repOficioFirmaDigital</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>ServletSaveOfFD</servlet-name>
+        <servlet-class>sagde.firmardoc.ServletSaveOfFD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletSaveOfFD</servlet-name>
+        <url-pattern>/servletsaveOfFD</url-pattern>
+    </servlet-mapping>
+    <!-- ****************************DECRETAR DOCUMENTOS************************************** -->
+    <servlet>
+        <servlet-name>ListaDocumentoDecreto</servlet-name>
+        <servlet-class>sagde.decretardoc.ListaDocumentoDecreto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListaDocumentoDecreto</servlet-name>
+        <url-pattern>/listadocdec</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AlfrescoVPServlet</servlet-name>
+        <servlet-class>sagde.decretardoc.AlfrescoVPServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AlfrescoVPServlet</servlet-name>
+        <url-pattern>/alfrescovp</url-pattern>
+    </servlet-mapping>    
+    <!-- ****************MODULO ADMINISTRACUION ****************************** -->
+    <servlet>
+        <servlet-name>ListarOrganizacionInterna</servlet-name>
+        <servlet-class>sagde.mantotablas.ListarOrganizacionInterna</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarOrganizacionInterna</servlet-name>
+        <url-pattern>/listainterna</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ListarUsuario</servlet-name>
+        <servlet-class>sagde.mantotablas.ListarUsuario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListarUsuario</servlet-name>
+        <url-pattern>/listausuario</url-pattern>
+    </servlet-mapping>
+    <!-- CERRAR LOGOUT -->
+    <servlet>
+        <servlet-name>ServletLogout</servlet-name>
+        <servlet-class>sagde.login.ServletLogout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletLogout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <!-- LOGIN -->
+    
+    <!-- SERVLET FIRMA DIGITAL -->
+    <servlet>
+        <servlet-name>ServletArgumentos</servlet-name>
+        <servlet-class>sagde.firmadigital.ServletArgumentos</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletArgumentos</servlet-name>
+        <url-pattern>/argumentos</url-pattern>
+    </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>ServletUpload</servlet-name>
+        <servlet-class>sagde.firmadigital.ServletUpload</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletUpload</servlet-name>
+        <url-pattern>/servletUpload</url-pattern>
+    </servlet-mapping>
+    
+    
+    <!-- PAGINA DE INICIO-->
+    <welcome-file-list>
+       <welcome-file>/gedad/login/I_Login.jsp</welcome-file>
+         
+           <!-- <welcome-file>/I_Prueba.jsp</welcome-file>-->
+    </welcome-file-list>
+    <!-- TIEMPO DE SESION-->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+</web-app>
