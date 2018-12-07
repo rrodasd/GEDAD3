@@ -367,6 +367,7 @@
             function f_Grabar_Anexos() {
                 var accion_anexos = document.all.txh_accion_anexos.value;
                 var periodo_anexo = document.all.txh_perido_anexos.value;
+                alert(periodo_anexo);
                 var cod_int_anexos = document.all.txh_codinter_anexos.value;
                 var sec_anexos = document.all.txh_secuencia_anexos.value;
                 var file_anexos = document.all.txh_archivo_anexos.value;
@@ -374,7 +375,7 @@
                 var frm_anexos = $("#frm_anexos")[0];
 
                 if (accion_anexos == "insertar_anexos") {
-                    frm_anexos.action = ctx_path.concat("/capturaAnexos_RD?cod_interno=" + cod_int_anexos + "&accion=" + accion_anexos);
+                    frm_anexos.action = ctx_path.concat("/capturaAnexos_RD?cod_interno=" + cod_int_anexos + "&accion=" + accion_anexos+"&periodo=" + periodo_anexo);
                     frm_anexos.submit();
 
                     alert("Se Grabò exitosamente");

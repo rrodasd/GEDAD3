@@ -735,7 +735,8 @@
                 var ruta = ctx_path.concat("/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=", new Date().getTime(),
                         "&reporte=", OPC_MUESTRA_ENVIO,
                         "&firma=", firma,
-                        "&recibe=", recibe);
+                        "&recibe=", recibe,
+                         "&formulario=revisar");
                 $("#div_cbx_firmado").load(ruta, function () {
                     var usuario_logeado = "<%=objBeanU.getVUSUARIO_CODIGO()%>";
                     if (document.all.cbo_firmadoPor.value === document.all.cbo_revisadoPor.value &&
@@ -905,19 +906,25 @@
 
 
             function f_tranferencia(accion) {
+             
 
-                var cboDependencia = document.all.cboDependencia.value;
-                var cbo_OrgDependencia = document.all.cbo_OrgDependencia.value;
-                var txt_Clave = document.all.txt_Clave.value;
-                var cboArchivoIndicativo = document.all.cboArchivoIndicativo.value;
-                var txt_Asunto = btoa(document.all.txt_Asunto.value);
-                //var cuerpo  = document.all.cuerpo.value;
-                var cuerpo = btoa(btoa(CKEDITOR.instances.cuerpo.getData()));
-                var cbo_Prioridad = document.all.cbo_Prioridad.value;
-                var cbo_revisadoPor = document.all.cbo_revisadoPor.value;
-                var cbo_firmadoPor = document.all.cbo_firmadoPor.value;
+                var cboDependencia = document.all.cboDependencia.value;               
+                var cbo_OrgDependencia = document.all.cbo_OrgDependencia.value;                 
+                var txt_Clave = document.all.txt_Clave.value;                
+                var cboArchivoIndicativo = document.all.cboArchivoIndicativo.value;                  
+                var txt_Asunto = btoa(document.all.txt_Asunto.value);                
+                var cuerpo = btoa(btoa(CKEDITOR.instances.cuerpo.getData()));                  
+                var cbo_Prioridad = document.all.cbo_Prioridad.value;                
+                if (accion=='BORRADOR'){
+                      var cbo_revisadoPor = "";
+                      var cbo_firmadoPor = ""
+                }else {
+                 var cbo_revisadoPor = document.all.cbo_revisadoPor.value;                
+                 var cbo_firmadoPor = document.all.cbo_firmadoPor.value;                
+                
+                 }             
                 var txA_Obs_Enviar = btoa(document.all.area_obs_enviar.value);
-
+                
                 if ((cbo_revisadoPor == "000") || (cbo_firmadoPor == "000")) {
                     alert("Eliga Quien firmara");
 
@@ -961,7 +968,10 @@
             }
 
 
-            function f_devolverdocumento() {
+/*
+
+            function f_devolverdocumento() {         
+            
 
                 var cbo_OrgDependencia = document.all.cbo_OrgDependencia.value;
                 var txt_Clave = document.all.txt_Clave.value;
@@ -970,7 +980,6 @@
                 var cuerpo = btoa(btoa(CKEDITOR.instances.cuerpo.getData()));
                 var cbo_Prioridad = document.all.cbo_Prioridad.value;
                 var txA_Obs_Enviar = btoa(document.all.txA_Obs.value);
-
 
                 var accion_enviar = "DEVOLVER";
 
@@ -990,6 +999,7 @@
                         "&cbo_Prioridad=" + cbo_Prioridad +
                         "&txA_Obs_Enviar=" + txA_Obs_Enviar +
                         "&accion_enviar=" + accion_enviar;
+                
                 ajaxEnviaRevisar.open("GET", ruta, true);
                 ajaxEnviaRevisar.send("");
 
@@ -1001,9 +1011,57 @@
 
                 setTimeout(f_listar(cboDependencia), 2000);
 
-
-
             }
+            
+            */
+               
+               
+    function f_devolverdocumento() {   
+                var cbo_OrgDependencia = document.all.cbo_OrgDependencia.value;
+                var txt_Clave = document.all.txt_Clave.value;
+                var cboArchivoIndicativo = document.all.cboArchivoIndicativo.value;
+                var txt_Asunto = btoa(document.all.txt_Asunto.value);
+                var cuerpo = btoa(btoa(CKEDITOR.instances.cuerpo.getData()));
+                var cbo_Prioridad = document.all.cbo_Prioridad.value;
+                var txA_Obs_Enviar = btoa(document.all.txA_Obs.value);
+                var cboDependencia = document.all.cboDependencia.value;  
+
+                var accion_enviar = "DEVOLVER";
+
+                var reporte = "REV_04";
+              
+                var ruta = ctx_path.concat("/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=",new Date().getTime(),
+                        "&reporte=", reporte,
+                        "&cbo_OrgDependencia=",cbo_OrgDependencia,
+                        "&txt_Clave=",txt_Clave ,
+                        "&cboArchivoIndicativo=",cboArchivoIndicativo,
+                        "&txt_Asunto=", txt_Asunto,
+                        "&txt_cuerpo=",cuerpo,
+                        "&cbo_Prioridad=",cbo_Prioridad,
+                        "&txA_Obs_Enviar=",txA_Obs_Enviar,
+                        "&accion_enviar=",accion_enviar);
+                        
+                    $("#ajaxrevisar").load(ruta, function () {                        
+                        $('#miModalEnvio').modal('hide');
+                        $('#miModalREVISAR').modal('hide');
+                        $('#miModalDevolver').modal('hide');
+                        $('#miModalAlertaDevolver').modal({backdrop: 'static', keyboard: false});                          
+                      
+                        ruta = ctx_path.concat("/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=",
+                                new Date().getTime(),
+                                "&reporte=REV_01",
+                                "&dependencia=", cboDependencia);
+                        $("#listado").load(ruta, function () {
+                            $('#example').DataTable();
+                        });
+                    });
+   
+            }
+           
+               
+    
+    
+    
 
 
             function f_Borrador() {
@@ -1060,6 +1118,12 @@
                 $('#miModalEnvio').modal('hide');
                 document.all.txh_accion_botones.value = "";
             }
+             function f_cerrar_moAlertaDelvolver() {
+                $('#miModalAlertaDevolver').modal('hide');
+               
+            }
+            
+            
 
         </script>
 

@@ -73,6 +73,10 @@ public class ServletCapturaAnexos_RD extends HttpServlet {
             //2. Obtener el Codigo del Documento Interno para guardar en la BD  
             periodo = req.getParameter("periodo");
             nro_cod_int = req.getParameter("cod_interno");
+            System.out.println("periodo"+periodo);
+                        System.out.println("nro_cod_int"+nro_cod_int);
+                        System.out.println("nrosec"+nrosec);
+                        
 
             //3. Obtener la Secuencia segun el Codigo de Docuemnto Interno para guardar en la BD
             nrosec = objRD.generaSecAnexo(periodo, nro_cod_int);
@@ -112,6 +116,12 @@ public class ServletCapturaAnexos_RD extends HttpServlet {
                         PreparedStatement pcs = null;
                         cnx = getConnection();
                         //FileInputStream streamEntrada1 = new FileInputStream(item.getName());
+                        
+                        System.out.println("periodo"+periodo);
+                        System.out.println("nro_cod_int"+nro_cod_int);
+                        System.out.println("nrosec"+nrosec);
+                        System.out.println("nameFile"+nameFile);
+                        System.out.println("retornoUpload"+retornoUpload);
                         pcs = cnx.prepareStatement("insert into sagde_anexos(CANEXO_PERIODO,CANEXO_COD_DOC_INT,CANEXO_SECUENCIA,VANEXO_NOMBRE,VANEXO_TOKEN) values(?,?,?,?,?)");
                         pcs.setString(1, periodo);
                         pcs.setString(2, nro_cod_int);

@@ -14,8 +14,8 @@ import sagde.firmadigital.commons.BytesUtil;
 public class Constante {
 
    // public static final String PATH_PROPERTIES = "/data/gedad/gedad.properties";
-    //public static final String PATH_PROPERTIESLOCAL = "C:\\data\\aws\\alfresco_api.properties";
-    public static final String PATH_PROPERTIESLOCAL = "/data/gedad/gedad.properties";
+    public static final String PATH_PROPERTIESLOCAL = "C:\\data\\aws\\alfresco_api.properties";
+   // public static final String PATH_PROPERTIESLOCAL = "/data/gedad/gedad.properties";
    
 
     /**
@@ -23,8 +23,8 @@ public class Constante {
      */
     public static final String TOKEN_ID = "MjU2NTI0Mjk5MTk4NzkxOTM=";
     public static final String CLIENT_ID = "MjU2NTI0Mjk5MTk4NzkxOTQ=";
-    //public static final String SERVER_PATH = "http://10.64.93.251:8084/GEDAD_2018";
-    public static final String SERVER_PATH = "http://10.64.3.13:8080/GEDAD_2018";
+    //public static final String SERVER_PATH = "http://loclahost:8084/GEDAD";
+    public static final String SERVER_PATH = "http://10.64.3.13:8080/GEDAD";
     public static final String REASON = "Sistema GEDAD";
     public static final String DOWNLOAD_LOGO_URL = "/resources/iLogo1.png";
     public static final String DOWNLOAD_STAMP_URL = "/resources/iFirma1.png";

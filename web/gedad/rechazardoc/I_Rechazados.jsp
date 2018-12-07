@@ -204,7 +204,10 @@
 
             function f_visualizardoc(codint, clase, periodo, secuencia, r_observa) {
                 document.all.area_obs.value = r_observa;
-                $('#miModalObs').modal('show');
+                 if(r_observa!==""){
+                    $('#miModalObs').modal('show');
+                }
+             
                 $('#miModalREVISAR').modal({backdrop: 'static', keyboard: false});
                 var ruta = ctx_path.concat("/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=",
                         new Date().getTime(),
@@ -606,7 +609,8 @@
                 var ruta = ctx_path.concat("/gedad/revisardoc/I_PorRevisar_ajax.jsp?pasacache=", new Date().getTime(),
                         "&reporte=", OPC_MUESTRA_ENVIO,
                         "&firma=", firma,
-                        "&recibe=", recibe);
+                        "&recibe=", recibe,
+                         "&formulario=revisar");
                 $("#div_cbx_firmado").load(ruta, function () {
                     var usuario_logeado = "<%=objBeanU.getVUSUARIO_CODIGO()%>";
                     if (document.all.cbo_firmadoPor.value === document.all.cbo_revisadoPor.value &&

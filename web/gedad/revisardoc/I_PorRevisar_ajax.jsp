@@ -391,8 +391,13 @@
                 <!--  FIN LISTA DE ANEXOS -->	
 
             </div></td>
+            
+            <tr>
+        <td>&nbsp;</td>
+        <td colspan="5">&nbsp;</td>
+            </tr>
     </tr>
-
+    
     <tr>
         <td colspan="6">    
             <table>
@@ -401,7 +406,7 @@
                         <input type="button" class="btn btn-success form-control" onclick="javascript:f_terminar('<%=objBeanRD.getVFIRMA_COD_USUARIO()%>', '<%=objbean.getVUSUARIO_CODIGO()%>');" value="ENVIAR DOCUMENTO" />
                     </td>
                     <td>
-                        <input type="button" class="btn btn-warning form-control" onclick="javascript:f_Borrador();" value="BORRADOR">
+                        <input type="button" class="btn btn-warning form-control" onclick="javascript:f_tranferencia('BORRADOR');" value="BORRADOR">
                     </td>
                     <td>
                         <input type="button" class="btn btn-danger form-control" onclick="javascript:f_Abredevolver();" value="DEVOLVER DOCUMENTO">
@@ -438,6 +443,11 @@
     String codigoUsuario = (String) ((BeanUsuarioAD) (session.getAttribute("usuario"))).getVUSUARIO_CODIGO();
     String secuencia = beanrevisar.getCHDOCUMENTO_SECUENCIA();
     String guarnicion = beanrevisar.getVDOCUMENTO_GUARNICION();
+
+ String usufirma = beanrevisar.getVFIRMA_COD_USUARIO();
+
+
+
     /*
     System.out.println("----------------------- Datos obtenido del BeanRevisar-------------------------------------------");
     System.out.println("-1.Periodo--" + periodo + "\n" + "-2.codigoDocumentoInterno-" + codigoDocumentoInterno + "\n" + "-3.claseDocumento-" + claseDocumento + "\n"
@@ -507,20 +517,20 @@
     try {
 
         if (accion_enviar.equals("FIRMADIGITAL")) {
-
             String token = null;
-            token = (String) sec2.getAttribute("tokenID_Of");
-            //System.out.println("----------------------- vamos tokennnn------------------------------------------"+token);
+            token = (String) sec2.getAttribute("tokenID_Of");            
             beanrevisarDocumento.setTokenOFicio(token);
             //Nro unico de OFICIo
             String NroUnicoOF = request.getParameter("NroUnicoOF");
             beanrevisarDocumento.setNroUnicoOF(NroUnicoOF);
+            String NumeroDoc = objRevisaDocumento.FirmaDigitalDocumento(beanrevisarDocumento, referencias, distribuciones);        
 
-            String NumeroDoc = objRevisaDocumento.FirmaDigitalDocumento(beanrevisarDocumento, referencias, distribuciones);
-            //System.out.println(" NumeroDoc-------" + NumeroDoc);
+        } else if(accion_enviar.equals("BORRADOR")){ 
+             beanrevisarDocumento.setVDOCUMENTO_USUARIO_REVISA(codigoUsuario);  
+             beanrevisarDocumento.setVDOCUMENTO_USUARIO_FIRMA(usufirma);
+            objRevisaDocumento.EnviarRevisarDocumento(beanrevisarDocumento, referencias, distribuciones);
 
-        } else {
-
+        }else {
             objRevisaDocumento.EnviarRevisarDocumento(beanrevisarDocumento, referencias, distribuciones);
         }
     } catch (SQLException e) {
@@ -546,7 +556,7 @@
     String codigoUsuario = (String) ((BeanUsuarioAD) (session.getAttribute("usuario"))).getVUSUARIO_CODIGO();
     String secuencia = beanrevisar.getCHDOCUMENTO_SECUENCIA();
     String guarnicion = beanrevisar.getVDOCUMENTO_GUARNICION();
-    String revisadopor = beanrevisar.getVDOCUMENTO_USUARIO_ENV();
+    String revisadopor = beanrevisar.getUSUARIO_ENVIO_ANTERIOR();
     String firmadopor = beanrevisar.getVFIRMA_COD_USUARIO();
 
     /*

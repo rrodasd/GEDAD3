@@ -203,6 +203,7 @@ public class OracleRevisaDocumentoDAO implements RevisaDocumentoDAO {
                 objBeanRD.setNOMORGNIVCOR(rst.getString(28));
                 objBeanRD.setNOMORGDEPCOR(rst.getString(29));
                 objBeanRD.setCHDOCUMENTO_SECUENCIA(rst.getString(30));
+                objBeanRD.setUSUARIO_ENVIO_ANTERIOR(rst.getString(31));
 
             }
         } catch (SQLException e) {
@@ -271,40 +272,31 @@ public class OracleRevisaDocumentoDAO implements RevisaDocumentoDAO {
             }
              */
             //Agregar distribucion    
-            System.out.println("entrooo vieneeee--" + distribuciones.size());
+           
 
             Iterator iterator2 = distribuciones.iterator();
-            System.out.println("entrooo-------------------------------");
+           
             int contador2 = 0;
             while (iterator2.hasNext()) {
                 cs.clearParameters();
                 objBeanDi = (BeanDistribucion) iterator2.next();
                 cs = conn.prepareCall("{call SP_INS_DISTRIBUCION(?,?,?,?,?,?,?,?,?,?)}");
-                cs.setString(1, beanrevisar.getCDOCUMENTO_PERIODO());
-                System.out.println("1-beanrevisar.getCDOCUMENTO_PERIODO()-------------------------------" + beanrevisar.getCDOCUMENTO_PERIODO());
-                cs.setString(2, beanrevisar.getCDOCUMENTO_COD_DOC_INT());
-                System.out.println("2-beanrevisar.getCDOCUMENTO_COD_DOC_INT()-------------------------------" + beanrevisar.getCDOCUMENTO_COD_DOC_INT());
-                cs.setString(3, objBeanDi.getTipoOrganizacion());
-                System.out.println("3.-objBeanDi.getTipoOrganizacion()-------------------------------" + objBeanDi.getTipoOrganizacion());
-                cs.setString(4, objBeanDi.getCodigoOrganizacion());
-                System.out.println("4-objBeanDi.getCodigoOrganizacion()-------------------------------" + objBeanDi.getCodigoOrganizacion() + "--");
-                cs.setString(5, objBeanDi.getGrado());
-                System.out.println("5-objBeanDi.getGrado()-------------------------------" + objBeanDi.getGrado());
-                cs.setString(6, objBeanDi.getNombre());
-                System.out.println("6-objBeanDi.getNombre()-------------------------------" + objBeanDi.getNombre());
-                cs.setString(7, objBeanDi.getCargo());
-                System.out.println("7-objBeanDi.getCargo()-------------------------------" + objBeanDi.getCargo());
-                cs.setString(8, objBeanDi.getTipo());
-                System.out.println("8-objBeanDi.getTipo()-------------------------------" + objBeanDi.getTipo());
+                cs.setString(1, beanrevisar.getCDOCUMENTO_PERIODO());               
+                cs.setString(2, beanrevisar.getCDOCUMENTO_COD_DOC_INT());              
+                cs.setString(3, objBeanDi.getTipoOrganizacion());               
+                cs.setString(4, objBeanDi.getCodigoOrganizacion());               
+                cs.setString(5, objBeanDi.getGrado());                
+                cs.setString(6, objBeanDi.getNombre());               
+                cs.setString(7, objBeanDi.getCargo());             
+                cs.setString(8, objBeanDi.getTipo());                
                 if (contador2 > 0) {
-                    cs.setString(9, "N");
-                    System.out.println("9-------------------------------");
+                    cs.setString(9, "N");                   
                 } else {
                     cs.setString(9, "B");
-                    System.out.println("9.1-------------------------------");
+                    
                 }
                 cs.setString(10, "");
-                System.out.println("10-------------------------------");
+              
                 contador2++;
 
                 cs.execute();
@@ -556,7 +548,7 @@ public class OracleRevisaDocumentoDAO implements RevisaDocumentoDAO {
 
         String codigo = "";
         try {
-            String sql = "SELECT LPAD(NVL(MAX(CANEXO_SECUENCIA),0)+1,5,'0') FROM SAGDE_ANEXOS where 	CANEXO_PERIODO=" + codperiodo + "AND CANEXO_COD_DOC_INT=" + coddocint;
+            String sql = "SELECT LPAD(NVL(MAX(CANEXO_SECUENCIA),0)+1,5,'0') FROM SAGDE_ANEXOS where CANEXO_PERIODO=" + codperiodo + "AND CANEXO_COD_DOC_INT=" + coddocint;
             conn = getConnection();
             st = conn.createStatement();
             rst = st.executeQuery(sql);

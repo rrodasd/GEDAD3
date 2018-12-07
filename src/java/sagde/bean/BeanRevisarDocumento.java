@@ -159,6 +159,7 @@ public class BeanRevisarDocumento extends Bean{
         private String TokenOFicio; 
         
         private String JEFE_UNIDAD;
+        private String USUARIO_ENVIO_ANTERIOR;
 
         
 
@@ -692,6 +693,20 @@ public class BeanRevisarDocumento extends Bean{
      */
     public void setJEFE_UNIDAD(String JEFE_UNIDAD) {
         this.JEFE_UNIDAD = JEFE_UNIDAD;
+    }
+
+    /**
+     * @return the USUARIO_ENVIO_ANTERIOR
+     */
+    public String getUSUARIO_ENVIO_ANTERIOR() {
+        return USUARIO_ENVIO_ANTERIOR;
+    }
+
+    /**
+     * @param USUARIO_ENVIO_ANTERIOR the USUARIO_ENVIO_ANTERIOR to set
+     */
+    public void setUSUARIO_ENVIO_ANTERIOR(String USUARIO_ENVIO_ANTERIOR) {
+        this.USUARIO_ENVIO_ANTERIOR = USUARIO_ENVIO_ANTERIOR;
     }
         
         
